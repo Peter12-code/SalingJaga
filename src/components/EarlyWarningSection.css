@@ -1,0 +1,207 @@
+/* Early Warning Section */
+.ews-section-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.ews-page-title {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--text-main);
+  font-family: 'Outfit', sans-serif;
+  margin: 0;
+}
+
+.ews-page-sub {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin: 2px 0 0 0;
+}
+
+.ews-telemetry-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  gap: 16px;
+}
+
+.sensor-card {
+  background: var(--surface-glass);
+  backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--surface-glass-border);
+  border-radius: 14px;
+  padding: 16px;
+  border: 1px solid var(--border-subtle);
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.04);
+  display: flex;
+  flex-direction: column;
+}
+
+.sensor-card.red { border-left: 5px solid #dc2626; }
+.sensor-card.orange { border-left: 5px solid #ea580c; }
+.sensor-card.green { border-left: 5px solid #16a34a; }
+
+.sensor-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.sensor-tag {
+  font-size: 0.68rem;
+  font-weight: 800;
+  color: var(--text-muted);
+  letter-spacing: 0.5px;
+}
+
+.sensor-status-badge {
+  font-size: 0.68rem;
+  font-weight: 800;
+  padding: 2px 7px;
+  border-radius: 5px;
+}
+
+.sensor-status-badge.red { background: #fee2e2; color: #dc2626; }
+.sensor-status-badge.orange { background: #ffedd5; color: #ea580c; }
+.sensor-status-badge.green { background: #dcfce7; color: #16a34a; }
+
+.sensor-name {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin: 0 0 10px 0;
+}
+
+.sensor-reading {
+  background: var(--surface);
+  padding: 8px 12px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+
+.sensor-reading-val {
+  display: block;
+  font-size: 1.25rem;
+  font-weight: 800;
+  font-family: 'Outfit', sans-serif;
+  color: var(--text-main);
+}
+
+.sensor-reading-threshold {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+.sensor-desc {
+  font-size: 0.78rem;
+  color: var(--text-light);
+  margin: 0;
+  line-height: 1.4;
+}
+
+.ews-alerts-container {
+  background: var(--surface-glass);
+  backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--surface-glass-border);
+  border-radius: 16px;
+  padding: 20px;
+  border: 1px solid var(--border-subtle);
+}
+
+.ews-alerts-heading {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--text-main);
+  margin-bottom: 14px;
+}
+
+.ews-alerts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.ews-alert-item-card {
+  border: 1px solid #fed7aa;
+  background: #fffaf5;
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.ews-card-header {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.ews-item-level {
+  background: #dc2626;
+  color: #ffffff;
+  font-size: 0.7rem;
+  font-weight: 800;
+  padding: 2px 8px;
+  border-radius: 5px;
+}
+
+.ews-item-source {
+  font-size: 0.76rem;
+  color: #9a3412;
+  font-weight: 600;
+}
+
+.ews-item-title {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #7c2d12;
+  margin: 0 0 6px 0;
+}
+
+.ews-item-detail {
+  font-size: 0.82rem;
+  color: #431407;
+  margin: 0 0 10px 0;
+  line-height: 1.45;
+}
+
+.ews-recommendation-box {
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px dashed #f97316;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 0.82rem;
+  color: #7c2d12;
+  margin-bottom: 12px;
+}
+
+.ews-item-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.ews-time {
+  font-size: 0.76rem;
+  color: #9a3412;
+}
+
+.btn-broadcast-alert {
+  background: #dc2626;
+  color: #ffffff;
+  border: none;
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 2px 8px rgba(220, 38, 38, 0.3);
+}
+
+.btn-broadcast-alert:hover {
+  background: #b91c1c;
+  transform: translateY(-1px);
+}

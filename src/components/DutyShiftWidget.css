@@ -1,0 +1,487 @@
+/* ============================================================
+   DUTY SHIFT WIDGET (PUSDALOPS BPBD TANGERANG)
+   ============================================================ */
+.duty-shift-container {
+  width: 100%;
+}
+
+.duty-shift-card {
+  background: var(--surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: 18px;
+  padding: 18px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.03);
+  position: relative;
+  overflow: hidden;
+}
+
+[data-theme='dark'] .duty-shift-card {
+  background: rgba(15, 28, 44, 0.75);
+  backdrop-filter: blur(14px);
+  border-color: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+}
+
+.duty-card-left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.duty-badge-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.28);
+  padding: 4px 12px;
+  border-radius: 999px;
+  width: fit-content;
+}
+
+.duty-status-beacon {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 8px #4ade80;
+}
+
+.duty-regu-name {
+  font-size: 0.72rem;
+  font-weight: 850;
+  color: #059669;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+[data-theme='dark'] .duty-regu-name {
+  color: #6ee7b7;
+}
+
+.duty-divider {
+  color: var(--text-muted);
+  font-size: 0.72rem;
+  opacity: 0.5;
+}
+
+.duty-shift-name {
+  font-size: 0.72rem;
+  font-weight: 750;
+  color: var(--text-main);
+}
+
+.duty-headline {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.duty-title {
+  font-size: 1.05rem;
+  font-weight: 850;
+  color: var(--text-main);
+  font-family: 'Outfit', sans-serif;
+  letter-spacing: -0.015em;
+  margin: 0;
+}
+
+.duty-desc {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* 4 ROSTER PETUGAS PIKET */
+.duty-officers-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-top: 6px;
+  background: var(--surface-hover);
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--border-subtle);
+}
+
+.duty-officer-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.officer-role {
+  font-size: 0.66rem;
+  font-weight: 800;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.officer-name {
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: var(--text-main);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.officer-nip {
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-family: monospace;
+}
+
+/* RIGHT SECTION */
+.duty-card-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.shift-countdown-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(2, 132, 199, 0.08);
+  border: 1px solid rgba(2, 132, 199, 0.22);
+  padding: 8px 14px;
+  border-radius: 12px;
+  text-align: right;
+}
+
+[data-theme='dark'] .shift-countdown-box {
+  background: rgba(2, 132, 199, 0.16);
+  border-color: rgba(56, 189, 248, 0.3);
+}
+
+.countdown-icon-wrap {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: rgba(2, 132, 199, 0.15);
+  color: #0284c7;
+  display: grid;
+  place-items: center;
+}
+
+[data-theme='dark'] .countdown-icon-wrap {
+  color: #38bdf8;
+}
+
+.countdown-label {
+  display: block;
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  font-weight: 700;
+}
+
+.countdown-val {
+  display: block;
+  font-size: 0.86rem;
+  font-weight: 850;
+  color: #0284c7;
+  font-family: 'Outfit', sans-serif;
+}
+
+[data-theme='dark'] .countdown-val {
+  color: #38bdf8;
+}
+
+.btn-shift-handover {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--surface-hover);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-main);
+  padding: 9px 16px;
+  border-radius: 10px;
+  font-size: 0.8rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  white-space: nowrap;
+}
+
+.btn-shift-handover:hover {
+  background: rgba(34, 197, 94, 0.12);
+  border-color: var(--brand-green-primary);
+  color: var(--brand-green-primary);
+  transform: translateY(-1px);
+}
+
+/* MODAL STYLES */
+.shift-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  z-index: 2500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.shift-modal-box {
+  background: var(--surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: 20px;
+  width: 100%;
+  max-width: 620px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  animation: scaleUp 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes scaleUp {
+  from { transform: scale(0.95); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.shift-modal-header {
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--border-subtle);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--surface-hover);
+}
+
+.modal-title-wrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.modal-icon-rotate {
+  color: var(--brand-green-primary);
+}
+
+.modal-title {
+  font-size: 1.15rem;
+  font-weight: 850;
+  color: var(--text-main);
+  font-family: 'Outfit', sans-serif;
+  margin: 0;
+}
+
+.modal-sub {
+  font-size: 0.76rem;
+  color: var(--text-muted);
+  margin: 2px 0 0 0;
+}
+
+.btn-modal-close {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 6px;
+}
+
+.btn-modal-close:hover {
+  background: rgba(0, 0, 0, 0.1);
+  color: var(--text-main);
+}
+
+.shift-modal-body {
+  padding: 22px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.shift-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.shift-input-label {
+  display: block;
+  font-size: 0.74rem;
+  font-weight: 800;
+  color: var(--text-main);
+  margin-bottom: 6px;
+}
+
+.shift-static-field {
+  background: var(--surface-hover);
+  border: 1px solid var(--border-subtle);
+  padding: 10px 12px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.shift-static-field strong {
+  font-size: 0.88rem;
+  color: #059669;
+}
+
+.shift-static-field span {
+  font-size: 0.74rem;
+  color: var(--text-muted);
+}
+
+.shift-select,
+.shift-textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--border-subtle);
+  border-radius: 10px;
+  font-size: 0.82rem;
+  background: var(--surface);
+  color: var(--text-main);
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.shift-select:focus,
+.shift-textarea:focus {
+  border-color: var(--brand-green-primary);
+  box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.15);
+}
+
+.shift-history-section {
+  background: var(--surface-hover);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  padding: 12px 14px;
+}
+
+.history-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.history-item-box {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.history-item-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.history-time {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  font-family: monospace;
+}
+
+.history-regu-transition {
+  font-size: 0.7rem;
+  font-weight: 800;
+  color: #059669;
+}
+
+.history-notes {
+  font-size: 0.78rem;
+  color: var(--text-main);
+  margin: 0;
+  font-style: italic;
+  line-height: 1.4;
+}
+
+.history-officers {
+  font-size: 0.68rem;
+  color: var(--text-muted);
+}
+
+.shift-modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+  padding-top: 10px;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.btn-modal-cancel {
+  padding: 9px 16px;
+  background: var(--surface-hover);
+  border: 1px solid var(--border-subtle);
+  border-radius: 10px;
+  font-size: 0.82rem;
+  font-weight: 750;
+  color: var(--text-muted);
+  cursor: pointer;
+}
+
+.btn-modal-submit {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 18px;
+  background: linear-gradient(135deg, #059669, #10b981);
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  font-size: 0.82rem;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.25);
+  transition: all 0.2s;
+}
+
+.btn-modal-submit:hover {
+  background: linear-gradient(135deg, #047857, #059669);
+  transform: translateY(-1px);
+}
+
+/* RESPONSIVE */
+@media (max-width: 1080px) {
+  .duty-shift-card {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .duty-card-right {
+    align-items: stretch;
+  }
+  .shift-countdown-box {
+    justify-content: space-between;
+    text-align: left;
+  }
+}
+
+@media (max-width: 720px) {
+  .duty-officers-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .shift-form-row {
+    grid-template-columns: 1fr;
+  }
+}

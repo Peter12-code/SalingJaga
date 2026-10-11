@@ -1,0 +1,189 @@
+/* =========================================================
+   SalingJaga – Clean Minimal Design System
+   "Tanggap, Bantu, Lindungi"
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  /* Light Theme Palette (Default) */
+  --bg-base: #f3f7f5;
+  --bg-gradient: radial-gradient(circle at 10% 0%, rgba(34, 197, 94, 0.09), transparent 30%), radial-gradient(circle at 92% 8%, rgba(14, 165, 233, 0.08), transparent 28%);
+  
+  --surface: #ffffff;
+  --surface-glass: rgba(255, 255, 255, 0.92);
+  --surface-glass-border: #e2e8f0;
+  --surface-hover: #f1f5f9;
+  
+  --glass-blur: none;
+  --border-subtle: #e2e8f0;
+  --border-focus: #16a34a;
+
+  /* Brand Colors */
+  --brand-green-dark: #15803d;
+  --brand-green-primary: #16a34a;
+  --brand-green-light: #4ade80;
+  --brand-green-vibrant: #16a34a;
+  --brand-green-soft: #dcfce7;
+  --brand-green-glow: transparent;
+
+  /* Accent Colors (Solid, minimal gradients) */
+  --accent-red: #ef4444;
+  --accent-red-gradient: #ef4444;
+  --accent-orange: #f97316;
+  --accent-orange-gradient: #f97316;
+  --accent-amber: #f59e0b;
+  --accent-amber-gradient: #f59e0b;
+  --accent-blue: #3b82f6;
+  --accent-blue-gradient: #3b82f6;
+  --accent-purple: #8b5cf6;
+  --accent-purple-gradient: #8b5cf6;
+
+  /* Text Colors */
+  --text-main: #0f172a;
+  --text-muted: #475569;
+  --text-light: #64748b;
+  
+  /* Text Inverse */
+  --text-inverse: #ffffff;
+
+  /* Shadows (Reduced, clean) */
+  --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.04), 0 6px 20px rgba(15, 23, 42, 0.035);
+  --shadow-md: 0 12px 32px rgba(15, 23, 42, 0.08);
+  --shadow-lg: 0 24px 60px rgba(15, 23, 42, 0.12);
+  --shadow-glow-red: none;
+  --shadow-glow-green: none;
+  --shadow-glow-blue: none;
+}
+
+[data-theme="dark"] {
+  /* Dark Theme Palette */
+  --bg-base: #0b1220;
+  --bg-gradient: radial-gradient(circle at 12% 0%, rgba(34, 197, 94, 0.10), transparent 30%), radial-gradient(circle at 90% 7%, rgba(14, 165, 233, 0.08), transparent 26%);
+  
+  --surface: #1e293b;
+  --surface-glass: #1e293b;
+  --surface-glass-border: #334155;
+  --surface-hover: #334155;
+  
+  --border-subtle: #334155;
+  --border-focus: #16a34a;
+
+  /* Text Colors */
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --text-light: #cbd5e1;
+  
+  /* Text Inverse */
+  --text-inverse: #0f172a;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: var(--bg-base);
+  background-image: var(--bg-gradient);
+  background-attachment: fixed;
+  color: var(--text-main);
+  line-height: 1.5;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  transition: all 0.2s;
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid rgba(34, 197, 94, 0.3);
+  outline-offset: 2px;
+}
+
+button svg {
+  flex-shrink: 0;
+  max-width: 20px;
+  max-height: 20px;
+}
+
+input, select, textarea {
+  font-family: inherit;
+  font-size: 0.95rem;
+  background: var(--surface);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-main);
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: var(--border-focus);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-base);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-subtle);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+/* Utility Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+/* Base Card Utility */
+.glass-panel {
+  background: var(--surface-glass);
+  border: 1px solid var(--border-subtle);
+  box-shadow: var(--shadow-sm);
+  border-radius: 12px;
+}

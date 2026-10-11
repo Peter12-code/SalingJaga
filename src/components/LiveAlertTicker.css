@@ -1,0 +1,624 @@
+/* ============================================================
+   SalingJaga – Live Alert & BMKG Ticker Header Bar
+   ============================================================ */
+
+.header-ticker-pill {
+  flex: 1;
+  max-width: 620px;
+  min-width: 260px;
+  margin: 0 16px;
+  height: 42px;
+  background: var(--surface-hover);
+  border: 1px solid var(--border-subtle);
+  border-radius: 999px;
+  padding: 4px 8px 4px 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+  transition: all 0.25s ease;
+  user-select: none;
+  overflow: hidden;
+}
+
+.header-ticker-pill:hover {
+  background: var(--surface);
+  border-color: var(--brand-green-primary);
+  box-shadow: 0 4px 16px rgba(16, 185, 129, 0.15);
+  transform: translateY(-1px);
+}
+
+/* 1. Cluster Badge & Live Ping */
+.ticker-badge-cluster {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.ticker-live-ping {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #ef4444;
+  box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7);
+  animation: tickerPing 1.8s infinite cubic-bezier(0.66, 0, 0, 1);
+}
+
+@keyframes tickerPing {
+  0% {
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 6px rgba(239, 68, 68, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0);
+  }
+}
+
+.ticker-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.ticker-chip.badge-red {
+  background: rgba(239, 68, 68, 0.12);
+  color: #dc2626;
+  border: 1px solid rgba(239, 68, 68, 0.25);
+}
+
+.ticker-chip.badge-cyan {
+  background: rgba(6, 182, 212, 0.12);
+  color: #0284c7;
+  border: 1px solid rgba(6, 182, 212, 0.25);
+}
+
+.ticker-chip.badge-amber {
+  background: rgba(245, 158, 11, 0.12);
+  color: #d97706;
+  border: 1px solid rgba(245, 158, 11, 0.25);
+}
+
+.ticker-chip.badge-emerald {
+  background: rgba(16, 185, 129, 0.12);
+  color: #059669;
+  border: 1px solid rgba(16, 185, 129, 0.25);
+}
+
+/* 2. Sliding Ticker Body */
+.ticker-body {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.ticker-text-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  animation: tickerSlideIn 0.35s ease-out;
+}
+
+@keyframes tickerSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.ticker-title {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--text-main);
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ticker-separator {
+  color: var(--text-muted);
+  font-weight: bold;
+}
+
+.ticker-subtitle {
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* 3. Controls & Counter */
+.ticker-controls {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+.ticker-counter {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  padding: 0 4px;
+}
+
+.ticker-nav-btn {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 1px solid var(--border-subtle);
+  background: var(--surface);
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  padding: 0;
+}
+
+.ticker-nav-btn:hover {
+  background: var(--brand-green-primary);
+  color: #ffffff;
+  border-color: var(--brand-green-primary);
+}
+
+/* ============================================================
+   MODAL DETAIL PERINGATAN DINI & BMKG RADAR
+   ============================================================ */
+.ticker-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: rgba(15, 23, 42, 0.72);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px;
+  overflow-y: auto;
+  animation: tickerFade 0.2s ease-out;
+  box-sizing: border-box;
+}
+
+@keyframes tickerFade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.ticker-modal-card {
+  width: 100%;
+  max-width: 640px;
+  max-height: calc(100vh - 48px);
+  background: var(--surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: 20px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.45);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  margin: auto;
+  animation: tickerModalZoom 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-sizing: border-box;
+}
+
+@keyframes tickerModalZoom {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.ticker-modal-header {
+  padding: 18px 24px;
+  border-bottom: 1px solid var(--border-subtle);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--surface-hover);
+  flex-shrink: 0;
+}
+
+.ticker-modal-header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.ticker-modal-icon-badge {
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  background: rgba(16, 185, 129, 0.15);
+  color: var(--brand-green-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ticker-modal-title {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--text-main);
+  margin: 0;
+}
+
+.ticker-modal-sub {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin: 2px 0 0 0;
+}
+
+.ticker-modal-close {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  background: var(--surface);
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.ticker-modal-close:hover {
+  background: rgba(239, 68, 68, 0.15);
+  color: #ef4444;
+}
+
+.ticker-modal-content {
+  padding: 20px 24px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Info Box */
+.ticker-info-box {
+  background: var(--surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: 14px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+}
+
+.ticker-info-box.box-gempa {
+  border-left: 4px solid #ef4444;
+}
+
+.ticker-info-box.box-situasi {
+  border-left: 4px solid #f59e0b;
+}
+
+.ticker-info-box.box-hotline {
+  border-left: 4px solid #10b981;
+}
+
+.info-box-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.info-box-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.74rem;
+  font-weight: 800;
+  padding: 3px 10px;
+  border-radius: 6px;
+  text-transform: uppercase;
+}
+
+.info-box-badge.badge-red {
+  background: rgba(239, 68, 68, 0.12);
+  color: #dc2626;
+}
+
+.info-box-badge.badge-amber {
+  background: rgba(245, 158, 11, 0.12);
+  color: #d97706;
+}
+
+.info-box-badge.badge-emerald {
+  background: rgba(16, 185, 129, 0.12);
+  color: #059669;
+}
+
+.info-box-time {
+  font-size: 0.74rem;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* Gempa Grid */
+.gempa-grid-stats {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.gempa-mag-badge {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  color: #ffffff;
+  padding: 12px 16px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+  flex-shrink: 0;
+}
+
+.gempa-mag-badge strong {
+  font-size: 1.35rem;
+  line-height: 1;
+}
+
+.gempa-mag-badge span {
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  margin-top: 4px;
+  opacity: 0.9;
+}
+
+.gempa-meta h4 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin: 0 0 6px 0;
+}
+
+.gempa-detail-row {
+  display: flex;
+  gap: 14px;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  flex-wrap: wrap;
+}
+
+.gempa-detail-row strong {
+  color: var(--text-main);
+}
+
+.gempa-potensi-note {
+  font-size: 0.78rem;
+  color: #eab308;
+  margin: 6px 0 0 0;
+  font-weight: 600;
+}
+
+.gempa-shakemap-preview {
+  margin-top: 4px;
+}
+
+.btn-shakemap-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--brand-green-primary);
+  text-decoration: none;
+  padding: 6px 12px;
+  background: var(--surface-hover);
+  border-radius: 8px;
+  border: 1px solid var(--border-subtle);
+  transition: all 0.2s;
+}
+
+.btn-shakemap-link:hover {
+  background: var(--surface);
+  border-color: var(--brand-green-primary);
+}
+
+/* Situasi Stats Row */
+.situasi-stats-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.situasi-stat-pill {
+  background: var(--surface-hover);
+  border: 1px solid var(--border-subtle);
+  padding: 10px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.situasi-stat-pill strong {
+  font-size: 1.2rem;
+  color: var(--text-main);
+  font-weight: 800;
+}
+
+.situasi-stat-pill span {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.situasi-note {
+  font-size: 0.76rem;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+/* Hotline Grid */
+.hotline-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.hotline-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--surface-hover);
+  border: 1px solid var(--border-subtle);
+  padding: 10px 14px;
+  border-radius: 12px;
+}
+
+.hotline-num {
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: #10b981;
+  line-height: 1;
+}
+
+.hotline-item strong {
+  display: block;
+  font-size: 0.82rem;
+  color: var(--text-main);
+}
+
+.hotline-item small {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+}
+
+/* Modal Footer */
+.ticker-modal-footer {
+  padding: 16px 24px;
+  border-top: 1px solid var(--border-subtle);
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  background: var(--surface-hover);
+  flex-wrap: wrap;
+  flex-shrink: 0;
+}
+
+.btn-ticker-close-secondary {
+  display: inline-flex;
+  align-items: center;
+  padding: 9px 18px;
+  border-radius: 10px;
+  border: 1px solid var(--border-subtle);
+  background: var(--surface);
+  color: var(--text-muted);
+  font-weight: 700;
+  font-size: 0.84rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-ticker-close-secondary:hover {
+  background: var(--surface-hover);
+  color: var(--text-main);
+  border-color: var(--text-muted);
+}
+
+.btn-ticker-view-map {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--surface);
+  color: var(--text-main);
+  border: 1px solid var(--border-subtle);
+  padding: 9px 18px;
+  border-radius: 10px;
+  font-size: 0.84rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-ticker-view-map:hover {
+  background: var(--surface-hover);
+  border-color: var(--brand-green-primary);
+  color: var(--brand-green-primary);
+}
+
+.btn-ticker-report {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #059669, #10b981);
+  color: #ffffff;
+  border: none;
+  padding: 9px 20px;
+  border-radius: 10px;
+  font-size: 0.84rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.3);
+  transition: all 0.2s;
+}
+
+.btn-ticker-report:hover {
+  background: linear-gradient(135deg, #047857, #059669);
+  transform: translateY(-1px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  .header-ticker-pill {
+    max-width: 440px;
+  }
+  .ticker-subtitle {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .header-ticker-pill {
+    order: 3;
+    width: 100%;
+    max-width: 100%;
+    margin: 8px 0 0 0;
+  }
+  .situasi-stats-row {
+    grid-template-columns: 1fr;
+  }
+  .hotline-grid {
+    grid-template-columns: 1fr;
+  }
+}

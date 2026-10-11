@@ -1,0 +1,424 @@
+/* ============================================================
+   NationalSitRepModal.css – Laporan Situasi Bencana Nasional
+   ============================================================ */
+
+.national-sitrep-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(15, 23, 42, 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 1.5rem;
+  animation: sitrepFadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.national-sitrep-modal-card {
+  width: 100%;
+  max-width: 860px;
+  max-height: 90vh;
+  background: var(--surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: 18px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+  color: var(--text-main);
+}
+
+.national-sitrep-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 1.5rem 1.75rem;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.sitrep-header-left {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.sitrep-badge-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #16a34a, #15803d);
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(22, 163, 74, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.national-sitrep-header .sitrep-eyebrow {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: var(--brand-green-primary);
+  text-transform: uppercase;
+  margin-bottom: 0.25rem;
+}
+
+.national-sitrep-header .sitrep-title {
+  margin: 0;
+  font-size: 1.35rem;
+  font-weight: 750;
+  color: var(--text-main);
+  letter-spacing: -0.02em;
+}
+
+.national-sitrep-header .sitrep-subtitle {
+  display: block;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin-top: 0.25rem;
+}
+
+.sitrep-btn-close {
+  background: var(--surface-hover);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-muted);
+  border-radius: 10px;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.sitrep-btn-close:hover {
+  background: rgba(239, 68, 68, 0.15);
+  color: #ef4444;
+}
+
+.national-sitrep-body {
+  padding: 1.5rem 1.75rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.sitrep-action-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  background: var(--surface-hover);
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  border: 1px solid var(--border-subtle);
+}
+
+.sitrep-timestamp-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.live-beacon-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 8px #10b981;
+  animation: pulseBeacon 1.5s infinite;
+}
+
+.sitrep-btn-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-sitrep-copy {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, #16a34a, #15803d);
+  color: #fff;
+  border: none;
+  padding: 0.55rem 1.1rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 2px 8px rgba(22, 163, 74, 0.3);
+}
+
+.btn-sitrep-copy:hover {
+  background: linear-gradient(135deg, #15803d, #166534);
+  transform: translateY(-1px);
+}
+
+.btn-sitrep-copy.copied {
+  background: #059669;
+}
+
+.btn-sitrep-download,
+.btn-sitrep-print {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: var(--surface);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-main);
+  padding: 0.55rem 0.85rem;
+  border-radius: 8px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-sitrep-download:hover,
+.btn-sitrep-print:hover {
+  background: var(--surface-hover);
+}
+
+/* ARAHAN */
+.sitrep-arahan-input-box {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.arahan-label {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--brand-green-primary);
+}
+
+.arahan-textarea {
+  background: var(--surface-hover);
+  border: 1px solid var(--border-subtle);
+  border-radius: 10px;
+  padding: 0.65rem 0.85rem;
+  color: var(--text-main);
+  font-size: 0.85rem;
+  font-family: inherit;
+  resize: vertical;
+}
+
+.arahan-textarea:focus {
+  outline: none;
+  border-color: var(--brand-green-primary);
+}
+
+/* PREVIEW */
+.sitrep-preview-container {
+  background: var(--surface-hover);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  padding: 1.25rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.sitrep-big-watermark {
+  position: absolute;
+  top: 52%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-20deg);
+  font-size: 3.2rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  color: rgba(239, 68, 68, 0.08);
+  pointer-events: none;
+  white-space: nowrap;
+  user-select: none;
+  z-index: 0;
+  text-transform: uppercase;
+}
+
+.preview-top-watermark {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px dashed var(--border-subtle);
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+  position: relative;
+  z-index: 2;
+}
+
+.doc-classification {
+  color: #ea580c;
+  font-weight: 800;
+}
+
+.preview-kpi-quad {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.kpi-block {
+  background: var(--surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  padding: 0.65rem;
+  text-align: center;
+}
+
+.kpi-block .kpi-val {
+  display: block;
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--text-main);
+}
+
+.kpi-block .kpi-lbl {
+  display: block;
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  margin-top: 0.15rem;
+}
+
+.kpi-block.highlight-red .kpi-val {
+  color: #dc2626;
+}
+
+.kpi-block.highlight-orange .kpi-val {
+  color: #ea580c;
+}
+
+.kpi-block.highlight-green .kpi-val {
+  color: #10b981;
+}
+
+.sitrep-text-pre {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.8rem;
+  line-height: 1.6;
+  color: var(--text-main);
+  white-space: pre-wrap;
+  margin: 0;
+  background: var(--surface);
+  border: 1px solid var(--border-subtle);
+  padding: 1rem;
+  border-radius: 8px;
+  max-height: 280px;
+  overflow-y: auto;
+}
+
+/* FOOTER */
+.national-sitrep-footer {
+  padding: 1.25rem 1.75rem;
+  background: var(--surface);
+  border-top: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.sitrep-footer-note {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  max-width: 520px;
+}
+
+.sitrep-footer-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.btn-sitrep-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, #16a34a, #15803d);
+  color: #fff;
+  border: none;
+  padding: 0.65rem 1.25rem;
+  border-radius: 10px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 4px 12px rgba(22, 163, 74, 0.3);
+}
+
+.btn-sitrep-primary:hover {
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+}
+
+@media (max-width: 640px) {
+  .preview-kpi-quad {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .national-sitrep-footer {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+/* KHUSUS TATA LETAK CETAK / PRINT */
+@media print {
+  body {
+    background: #fff !important;
+    color: #000 !important;
+  }
+  .national-sitrep-modal-backdrop {
+    position: static !important;
+    background: none !important;
+    padding: 0 !important;
+    backdrop-filter: none !important;
+  }
+  .national-sitrep-modal-card {
+    max-width: 100% !important;
+    max-height: none !important;
+    box-shadow: none !important;
+    border: none !important;
+    background: #fff !important;
+    color: #000 !important;
+  }
+  .sitrep-btn-close,
+  .sitrep-action-toolbar,
+  .sitrep-arahan-input-box,
+  .national-sitrep-footer {
+    display: none !important;
+  }
+  .sitrep-preview-container {
+    background: #fff !important;
+    border: 1px solid #ddd !important;
+    padding: 1rem !important;
+  }
+  .sitrep-text-pre {
+    max-height: none !important;
+    overflow: visible !important;
+    border: 1px solid #ccc !important;
+    background: #fafafa !important;
+    color: #111 !important;
+    font-size: 0.85rem !important;
+  }
+  .sitrep-big-watermark {
+    color: rgba(0, 0, 0, 0.08) !important;
+  }
+}

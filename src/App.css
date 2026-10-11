@@ -1,0 +1,84 @@
+/* ============================================================
+   App.css – layout shell
+   ============================================================ */
+.app-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1;
+  padding: 24px 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* ---- Two-column grid ---- */
+.content-grid {
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 20px;
+  align-items: start;
+}
+
+@media (max-width: 1100px) {
+  .content-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---- Notification Toast ---- */
+.toast {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 9999;
+  padding: 14px 20px;
+  border-radius: var(--radius);
+  font-size: 0.9rem;
+  font-weight: 500;
+  box-shadow: var(--shadow-md);
+  animation: slideUp 0.25s ease;
+  max-width: 360px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.toast.success {
+  background: #f0fdf4;
+  color: #15803d;
+  border: 1px solid #86efac;
+}
+.toast.error {
+  background: #fef2f2;
+  color: #dc2626;
+  border: 1px solid #fca5a5;
+}
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Ruang kosong bawah adaptif agar tombol chatbot & fixed bar tidak menutupi kartu, peta, atau widget */
+.dashboard-main,
+.citizen-portal-vibrant,
+.national-dashboard-main,
+.admin-command-view,
+.citizen-tab-pane,
+.tab-peta-view-layout,
+.national-tab-content-container {
+  padding-bottom: 96px !important;
+}
+
+@media (max-width: 768px) {
+  .dashboard-main,
+  .citizen-portal-vibrant,
+  .national-dashboard-main,
+  .admin-command-view,
+  .citizen-tab-pane {
+    padding-bottom: 120px !important;
+  }
+}
+

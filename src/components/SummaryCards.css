@@ -1,0 +1,279 @@
+/* ============================================================
+   TACTICAL SUMMARY CARDS (COMMAND CENTER REDESIGN)
+   ============================================================ */
+.summary-cards-section {
+  width: 100%;
+}
+
+.summary-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  margin-bottom: 0;
+}
+
+.stat-card-tactical {
+  background: var(--surface);
+  border-radius: 18px;
+  padding: 20px 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 14px;
+  border: 1px solid var(--border-subtle);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.03);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Ambient glow accent along the top */
+.stat-card-tactical::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  opacity: 0.8;
+  transition: height 0.25s ease, opacity 0.25s ease;
+}
+
+.stat-card-tactical.blue::before { background: linear-gradient(90deg, #0284c7, #38bdf8); }
+.stat-card-tactical.red::before { background: linear-gradient(90deg, #dc2626, #f87171); }
+.stat-card-tactical.amber::before { background: linear-gradient(90deg, #d97706, #fbbf24); }
+.stat-card-tactical.green::before { background: linear-gradient(90deg, #16a34a, #4ade80); }
+.stat-card-tactical.emerald::before { background: linear-gradient(90deg, #059669, #34d399); }
+.stat-card-tactical.cyan::before { background: linear-gradient(90deg, #0891b2, #38bdf8); }
+
+.stat-card-tactical:hover {
+  transform: translateY(-3px);
+  border-color: rgba(34, 197, 94, 0.35);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+}
+
+.stat-card-tactical:hover::before {
+  height: 4px;
+  opacity: 1;
+}
+
+[data-theme='dark'] .stat-card-tactical {
+  background: rgba(15, 28, 44, 0.65);
+  backdrop-filter: blur(14px);
+  border-color: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+}
+
+[data-theme='dark'] .stat-card-tactical:hover {
+  background: rgba(18, 34, 54, 0.85);
+  border-color: rgba(52, 211, 153, 0.4);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.35);
+}
+
+/* Card Header */
+.card-top-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.stat-tactical-icon {
+  width: 46px;
+  height: 46px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.25s ease;
+}
+
+.stat-card-tactical:hover .stat-tactical-icon {
+  transform: scale(1.08);
+}
+
+.stat-tactical-icon.blue {
+  background: rgba(2, 132, 199, 0.12);
+  color: #0284c7;
+  border: 1px solid rgba(2, 132, 199, 0.25);
+}
+.stat-tactical-icon.red {
+  background: rgba(220, 38, 38, 0.12);
+  color: #dc2626;
+  border: 1px solid rgba(220, 38, 38, 0.25);
+}
+.stat-tactical-icon.amber {
+  background: rgba(217, 119, 6, 0.12);
+  color: #d97706;
+  border: 1px solid rgba(217, 119, 6, 0.25);
+}
+.stat-tactical-icon.green {
+  background: rgba(22, 163, 74, 0.12);
+  color: #16a34a;
+  border: 1px solid rgba(22, 163, 74, 0.25);
+}
+.stat-tactical-icon.emerald {
+  background: rgba(5, 150, 105, 0.12);
+  color: #059669;
+  border: 1px solid rgba(5, 150, 105, 0.25);
+}
+.stat-tactical-icon.cyan {
+  background: rgba(8, 145, 178, 0.12);
+  color: #0891b2;
+  border: 1px solid rgba(8, 145, 178, 0.25);
+}
+
+[data-theme='dark'] .stat-tactical-icon.blue { color: #38bdf8; background: rgba(2, 132, 199, 0.2); }
+[data-theme='dark'] .stat-tactical-icon.red { color: #f87171; background: rgba(220, 38, 38, 0.2); }
+[data-theme='dark'] .stat-tactical-icon.amber { color: #fbbf24; background: rgba(217, 119, 6, 0.2); }
+[data-theme='dark'] .stat-tactical-icon.green { color: #4ade80; background: rgba(22, 163, 74, 0.2); }
+[data-theme='dark'] .stat-tactical-icon.emerald { color: #34d399; background: rgba(5, 150, 105, 0.2); }
+[data-theme='dark'] .stat-tactical-icon.cyan { color: #22d3ee; background: rgba(8, 145, 178, 0.2); }
+
+/* Status Pill Tag */
+.stat-pill-tag {
+  font-size: 0.7rem;
+  font-weight: 800;
+  padding: 3px 10px;
+  border-radius: 999px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.stat-pill-tag.tag-amber {
+  background: rgba(245, 158, 11, 0.12);
+  color: #b45309;
+  border: 1px solid rgba(245, 158, 11, 0.3);
+}
+.stat-pill-tag.tag-red {
+  background: rgba(239, 68, 68, 0.12);
+  color: #dc2626;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  animation: pulsePill 2s infinite;
+}
+.stat-pill-tag.tag-green,
+.stat-pill-tag.tag-emerald {
+  background: rgba(16, 185, 129, 0.12);
+  color: #059669;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+.stat-pill-tag.tag-purple {
+  background: rgba(168, 85, 247, 0.12);
+  color: #9333ea;
+  border: 1px solid rgba(168, 85, 247, 0.3);
+}
+.stat-pill-tag.tag-cyan {
+  background: rgba(6, 182, 212, 0.12);
+  color: #0891b2;
+  border: 1px solid rgba(6, 182, 212, 0.3);
+}
+
+[data-theme='dark'] .stat-pill-tag.tag-amber { color: #fcd34d; background: rgba(245, 158, 11, 0.2); }
+[data-theme='dark'] .stat-pill-tag.tag-red { color: #fca5a5; background: rgba(239, 68, 68, 0.2); }
+[data-theme='dark'] .stat-pill-tag.tag-green,
+[data-theme='dark'] .stat-pill-tag.tag-emerald { color: #6ee7b7; background: rgba(16, 185, 129, 0.2); }
+[data-theme='dark'] .stat-pill-tag.tag-purple { color: #d8b4fe; background: rgba(168, 85, 247, 0.2); }
+[data-theme='dark'] .stat-pill-tag.tag-cyan { color: #67e8f9; background: rgba(6, 182, 212, 0.2); }
+
+@keyframes pulsePill {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+/* Card Body */
+.stat-tactical-body {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.stat-tactical-value-row {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.stat-tactical-value {
+  font-size: 2.25rem;
+  font-weight: 850;
+  font-family: 'Outfit', sans-serif;
+  color: var(--text-main);
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+.stat-tactical-unit {
+  font-size: 0.8rem;
+  font-weight: 750;
+  color: var(--text-muted);
+}
+
+.stat-tactical-label strong {
+  display: block;
+  font-size: 0.88rem;
+  color: var(--text-main);
+  font-weight: 750;
+}
+
+.stat-tactical-label span {
+  display: block;
+  font-size: 0.74rem;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+/* Card Footer */
+.stat-tactical-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-top: 8px;
+  border-top: 1px dashed var(--border-subtle);
+  margin-top: 2px;
+}
+
+.card-nav-hint {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  transition: all 0.2s ease;
+}
+
+.hint-arrow {
+  transition: transform 0.2s ease;
+}
+
+.stat-card-tactical:hover .card-nav-hint {
+  color: var(--brand-green-primary);
+}
+
+.stat-card-tactical:hover .hint-arrow {
+  transform: translateX(3px);
+}
+
+/* Responsive */
+@media (max-width: 1080px) {
+  .summary-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .summary-cards-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .stat-card-tactical {
+    padding: 16px 18px;
+  }
+  .stat-tactical-value {
+    font-size: 1.85rem;
+  }
+}
